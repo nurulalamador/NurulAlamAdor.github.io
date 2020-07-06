@@ -1,0 +1,834 @@
+body {
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	background-image: url("../img/bodybg.svg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-size: cover;
+    color: #444444;
+}
+
+.bodyOne {
+    background-color: rgb(255,255,255, 0.8); 
+    padding: 40px; 
+    text-align: center;
+}
+
+.bodyTwo {
+    background-color: rgb(255,255,255, 0.9); 
+    padding: 40px; 
+    text-align: center;
+}
+
+.bodyThree {
+    background-color: rgb(33, 20, 73, 0.9); 
+    padding: 40px; 
+    text-align: center;
+}
+
+.container {
+    margin: auto;
+    max-width: 1250px;
+    position: relative;
+}
+
+.semiContainer {
+    margin: auto;
+    width: 550px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+}
+
+.hrOne {
+    width: 200px;
+    border: 1.5px #5533BB solid;
+    margin: 25px auto;
+}
+
+.bodyThree .hrOne {
+    border: 1.5px rgb(255, 255, 255, 0.2) solid;
+}
+
+.titleMain {
+    font-size: 40px; 
+}
+
+.bodyThree .titleMain {
+    color: #ffffff;
+}
+
+.hrThree {
+    width: 2px;
+    height: 320px;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgb(0, 0, 0, 0.1);
+    border: 0;
+    outline: 0;
+    margin: 35px;
+}
+
+.buttonOne {
+    font-size: 20px; 
+    background: linear-gradient(45deg, #FF00AA, #330077); 
+    color: #ffffff; 
+    padding: 20px 40px; 
+    border-radius: 40px; 
+    width: calc(100% - 80px);
+    max-width: 200px; 
+    margin: 10px auto; 
+    transition: 0.5s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.buttonOne::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(45deg, #FF9911, #FFF200);
+    border-radius: 40px; 
+    z-index: -1;
+    transition: 0.5s;
+    opacity: 0;
+}
+.buttonOne:hover {
+    color: #6600BB;
+    font-weight: 700;
+}
+.buttonOne:hover::before {
+    opacity: 1;
+}
+
+
+/* Page Loading Start */
+
+.logoSVG {
+    fill: url(#grad1);
+    animation: logoAnimation 3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-delay: .5s;
+    width: 80%;
+    max-width: 300px; 
+}
+
+@keyframes logoAnimation {
+    0% {
+        transform: scale(0);
+    }
+    25% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1) rotateZ(0);
+    }
+    75% {
+        transform: scale(1.5) rotateZ(180deg);
+    }
+    100% {
+        transform: scale(1) rotateZ(360deg);
+    }
+}
+
+.loadingScreen {
+    background: linear-gradient(45deg, #FF00AA, #6600BB);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 420;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Page Loading End */
+
+
+/* Header Start */
+
+header .logo {
+    padding: 2px;
+    width: 160px;
+}
+
+header {
+    background-image: url("../img/bodybg.svg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+    padding: 10px 20px;
+}
+
+.menuIcon {
+    display: none;
+}
+
+.menu {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.menu .closeMenu {
+    display: none;
+}
+
+.menu a {
+    vertical-align: middle;
+    padding: 12px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 2px;
+    transition: 0.5s;
+}
+
+.menu a:hover {
+    background: rgb(0,0,0,0.2);
+    border-radius: 30px;
+    font-weight: 700;
+    padding: 12px 30px;
+}
+
+.menu .active {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+    background: #ffffff;
+    border-radius: 30px;
+    color: #9933FF;
+    font-weight: 700;
+    padding: 12px 30px;
+}
+
+.welcomeText {
+    float: right;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    text-align: right;
+    padding: 20px;
+}
+
+.welcomeDesign {
+    width: 600px;
+}
+
+.welcomeText .textOne{
+    font-size: 50px; 
+    font-weight: 700; 
+    color: #ffffff
+}
+
+.welcomeText .textTwo{
+    font-size: 70px; 
+    font-weight: 900; 
+    color: #ffee00;
+}
+
+.welcomeText .textThree {
+    color: rgb(255, 255, 255, 0.8); 
+    font-size: 20px; 
+    line-height: 150%;
+}
+
+.welcomeText hr {
+    width: 80%;
+    border: 2px rgb(255, 255, 255, 0.6) solid;
+    margin: 30px 0px 30px auto;
+}
+
+/* Header End*/
+
+
+/* Footer Start */
+
+.footer {
+    background-color: #ffffff;
+    padding: 40px; 
+    text-align: center;
+    overflow: auto;
+}
+
+.footer .divider {
+    width: 2px;
+    height: 120px;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgb(0, 0, 0, 0.2);
+    border: 0;
+    outline: 0;
+    margin: 0 30px;
+}
+
+.footer .logo {
+    padding: 10px 0;
+    width: 160px;
+}
+
+
+.footer .containerOne {
+    vertical-align: middle;
+    text-align: left;
+    padding: 10px;
+    float: left;
+}
+
+.footer .containerContainer {
+    vertical-align: middle;
+    float: right;
+}
+
+.footer .containerOne .textOne {
+    font-weight: 700;
+}
+
+.footer .containerOne .textTwo {
+    font-size: 14px; 
+    padding: 8px 0px;
+}
+
+.footer .containerTwo {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    padding: 10px;
+}
+
+.footer .containerTwo .title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.footer .containerTwo hr {
+    width: 60%;
+    border: 1px rgb(0, 0, 0, 0.2) solid;
+    margin: 10px 0px;
+}
+
+.footer .containerTwo a {
+    text-decoration: none;
+    padding: 5px 0;
+    color: #444444;
+    display: block;
+    transition: 0.5s;
+}
+
+.footer .containerTwo a:hover {
+    color: #5533BB;
+}
+
+.footer .containerThree {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer .containerThree .icon {
+    width: 45px; 
+    height: 45px; 
+    border-radius: 30px; 
+    background: #000000; 
+    color: #ffffff; 
+    text-align: center; 
+    font-size: 25px;
+    display: inline-block;
+    margin: 2px;
+    transition: 0.5s;
+}
+
+.footer .containerThree .fb:hover {
+    background: #1877f2;
+}
+
+.footer .containerThree .tt:hover {
+    background: #00acee;
+}
+
+.footer .containerThree .bh:hover {
+    background: #053eff;
+}
+
+.footer .containerThree .textOne{
+    padding-bottom: 10px;
+}
+
+/* Footer End */
+
+
+/* Service Start */
+
+.service {
+    background: #ffffff; 
+    border-radius: 25px; 
+    padding: 15px; 
+    max-width: 580px;
+    display: inline-block;
+    margin: 7px 5px;
+    transition: 0.5s;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+}
+
+.service .icon {
+    background: linear-gradient(45deg, #9933FF, #330077); 
+    width: 140px; 
+    height: 140px; 
+    border-radius: 15px; 
+    display: inline-block; 
+    vertical-align: middle;
+    padding: 20px;
+}
+
+.service .text {
+    display: inline-block; 
+    vertical-align: middle; 
+    padding: 20px;
+    width: 340px;
+    text-align: left;
+}
+
+.service hr {
+    width: 60%;
+    border: 1px rgb(0, 0, 0, 0.2) solid;
+    margin: 15px 0px;
+}
+
+.service .text .textOne {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.service .text .textTwo {
+    line-height: 150%;
+}
+
+/* Service End */
+
+
+/* Skills Start */
+
+.skill {
+    width: 100%; 
+    height: 15px; 
+    background: rgb(0, 0, 0, 0.1); 
+    border-radius: 15px
+}
+
+.skill .Bengali {
+    width: 95%; 
+    height: 100%; 
+    background: linear-gradient(70deg, #006a4e, #f42a41); 
+    border-radius: 20px;
+}
+
+.skill .Hindi {
+    width: 85%; 
+    height: 100%; 
+    background: linear-gradient(70deg, #ff9933, #128807); 
+    border-radius: 20px;
+}
+
+.skill .English {
+    width: 80%; 
+    height: 100%; 
+    background: linear-gradient(70deg, #00247d, #cf142b); 
+    border-radius: 20px;
+}
+
+.skill .Urdu {
+    width: 75%; 
+    height: 100%; 
+    background: linear-gradient(70deg, #dddddd, #01411c);
+    border-radius: 20px;
+}
+
+.skill .Others {
+    height: 100%; 
+    background: linear-gradient(70deg, #FF00AA, #6600BB);
+    border-radius: 20px;
+}
+
+.skillName {
+    position: relative;
+    overflow: visible;
+    padding: 20px 0 10px 0;
+}
+
+.skillName .name {
+    text-align: left;
+    font-size: 20px;
+}
+
+.skillName .percent {
+    position: absolute; 
+    right: 0; 
+    bottom: 10px;
+}
+
+/* Skills End */
+
+
+/* recentWorkPopup Start */
+
+.recentWorkPopup {
+	display: none;
+	position: fixed;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0,0.6);
+	animation: fadeEffect 0.5s;
+}
+
+.recentWorkPopup img {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-height: 80%;
+	max-width: 90%;
+}
+
+.recentWorkPopup .close {
+	color: #FFFFFF;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	font-size: 35px;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.recentWorkPopup .close:hover {
+	color: #FF00AA;
+}
+
+.recentWorkPopup .mySlides {
+	display: none;
+}
+
+.recentWorkPopup .prev, .recentWorkPopup .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	margin-top: -40px;
+	color: #FFFFFF;
+	font-size: 30px;
+	transition: 0.5s;
+	text-align: center;
+    background: linear-gradient(70deg, #330077, #FF00AA); 
+    padding: 10px 25px;
+    opacity: 0.5;
+}
+
+.recentWorkPopup .next {
+	right: 0;
+	border-radius: 50px 0 0 50px;
+}
+.recentWorkPopup .prev {
+	left: 0;
+	border-radius: 0 50px 50px 0;
+}
+
+.recentWorkPopup .prev:hover, .recentWorkPopup .next:hover {
+	opacity: 1;
+}
+
+.recentWorkPopup .caption {
+	color: #FFFFFF;
+	font-size: 15px;
+	padding: 20px;
+	position: absolute;
+    top: 0;
+    width: calc(100% - 40px);
+    background: linear-gradient(#000000, rgb(0,0,0,0));
+    text-align: left;
+}
+
+.recentWork {
+    margin: 10px auto;
+}
+
+.recentWork .img {
+	display: inline-block;
+	width: 380px;
+	height: 260px;
+	overflow: hidden;
+    background: linear-gradient( #330077, #FF00AA); 
+    margin: 5px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.recentWork img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: 0.5s;
+	cursor: pointer;
+    transform: scale(1);
+}
+
+.recentWork img:hover {
+	transform: scale(1.2);
+	opacity: 0.3;
+}
+
+.recentWork .caption {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: calc(100% - 80px); 
+    padding: 40px; 
+    color: #ffffff; 
+    
+}
+
+.recentWork .caption .title {
+    font-size: 25px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+/* recentWorkPopup End */
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .bodyOne { 
+        padding: 40px 20px; 
+    }
+
+    .bodyThree { 
+        padding: 40px 30px; 
+    }
+
+    .titleMain {
+        font-size: 35px; 
+    }
+
+    .semiContainer {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .hrThree {
+        width: 80%;
+        height: 2px;
+        display: block;
+        margin: 35px auto;
+    }
+
+    /* Header Start */
+    
+    .menuIcon {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        color: #FFFFFF;
+        font-size: 30px;
+    }
+
+    header .menu {
+		height: 100%;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background: #FFFFFF;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding: 80px 0;
+        text-align: center;
+        transform: none;
+    }
+    
+    header .menu a {
+        display: block;
+        margin: 5px auto;
+        width: 90%;
+        max-width: 150px;
+        color: #9933FF;
+    }
+
+    header .menu a:hover {
+        background: rgb(0,0,0,0.1);
+    }
+
+    header .menu .active {
+        display: block;
+        margin: 5px auto;
+        width: 90%;
+        max-width: 150px;
+        background: #9933FF;
+        color: #FFFFFF;
+    }
+
+
+    header .menuoff {
+        width: 0%;
+    }
+
+    header .menuon {
+        width: 100%;
+    }
+
+    .menu .closeMenu {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 25px;
+        color: #9933FF;
+    }
+
+    .welcomeText {
+        float: none;
+        position: static;
+        top: auto;
+        transform: none;
+        right: auto;
+        text-align: center;
+        padding: 40px 10px;
+    }
+    
+    .welcomeText .textOne{
+        font-size: 40px; 
+    }
+    
+    .welcomeText .textTwo{
+        font-size: 55px;
+    }
+    
+    .welcomeText .textThree {
+        font-size: 18px; 
+        line-height: 150%;
+    }
+    
+    .welcomeText hr {
+        width: 60%;
+        margin: 30px auto;
+    }
+    
+    .welcomeDesign {
+        display: none;
+    }
+
+
+    /* Header End */
+
+
+    /* Footer Start */
+
+    .footer {
+        padding: 40px; 
+    }
+
+    .footer .divider {
+        width: 80%;
+        height: 2px;
+        display: block;
+        margin: 15px auto;
+    }
+
+    .footer .containerOne {
+        float: none;
+        display: block;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .footer .containerContainer {
+        float: none;
+    }
+
+    .footer .containerTwo {
+        display: block;
+        text-align: center;
+    }
+
+    .footer .containerTwo .title {
+        font-size: 22px;
+    }
+
+    .footer .containerTwo hr {
+        margin: 10px auto;
+    }
+
+    .footer .containerThree {
+        display: block;
+    }
+
+    /* Footer End */
+
+
+
+    /* Service Start */
+
+    .service {
+        display: block;
+        margin: 10px 5px;
+    }
+
+    .service:hover {
+        transform: none;
+    }
+
+    .service .icon {
+        width: calc(100% - 40px);
+        display: block; 
+    }
+
+    .service .icon img {
+        height: 100%;
+    }
+
+    .service .text {
+        display: block; 
+        padding: 15px;
+        width: calc(100% - 30px);
+        text-align: center;   
+    }
+
+    .service hr {
+        margin: 15px auto;
+    }
+
+    .service .text .textOne {
+        font-size: 28px;
+    }
+
+    /* Service End */
+
+
+     /* Recent Work Start */
+
+    .recentWork .img {
+        display: block;
+        width: 100%;
+        height: 220px;
+        margin: 10px 0;
+    }
+
+    /* Recent Work End */
+}
+
