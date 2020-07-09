@@ -8,10 +8,20 @@ body {
     color: #444444;
 }
 
+a {
+    text-decoration: none;
+}
+
 .bodyOne {
     background-color: rgb(255,255,255, 0.8); 
     padding: 40px; 
     text-align: center;
+}
+
+.bodyOne .logo {
+    width: 90%;
+    max-width: 400px;
+    padding: 50px 0;
 }
 
 .bodyTwo {
@@ -34,7 +44,8 @@ body {
 
 .semiContainer {
     margin: auto;
-    width: 550px;
+    width: calc(50% - 80px);
+    max-width: 550px;
     display: inline-block;
     vertical-align: middle;
     padding: 0 20px;
@@ -52,6 +63,13 @@ body {
 
 .titleMain {
     font-size: 40px; 
+}
+
+.titleHeader {
+    font-size: 50px; 
+    color:  #ffee00;
+    text-align: center;
+    padding: 30px 0 80px 0;
 }
 
 .bodyThree .titleMain {
@@ -209,13 +227,14 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 20px;
     text-align: right;
     padding: 20px;
 }
 
 .welcomeDesign {
     width: 600px;
+    margin: 20px;
 }
 
 .welcomeText .textOne{
@@ -561,8 +580,9 @@ header {
 }
 
 .recentWork .img {
-	display: inline-block;
-	width: 380px;
+    display: inline-block;
+    width: calc(50% - 20px);
+	max-width: 380px;
 	height: 260px;
 	overflow: hidden;
     background: linear-gradient( #330077, #FF00AA); 
@@ -587,7 +607,7 @@ header {
 
 .recentWork .caption {
     position: absolute; 
-    bottom: 0; 
+    bottom: 0;  
     left: 0; 
     width: calc(100% - 80px); 
     padding: 40px; 
@@ -604,9 +624,73 @@ header {
 /* recentWorkPopup End */
 
 
+@media only screen and (max-width: 1050px) {
+    /* Header Start */
+    .welcomeText {
+        float: none;
+        position: static;
+        top: auto;
+        transform: none;
+        right: auto;
+        text-align: center;
+        padding: 40px 10px;
+    }
+    
+    .welcomeText .textOne{
+        font-size: 40px; 
+    }
+    
+    .welcomeText .textTwo{
+        font-size: 55px;
+    }
+    
+    .welcomeText .textThree {
+        font-size: 18px; 
+        line-height: 150%;
+    }
+    
+    .welcomeText hr {
+        width: 60%;
+        margin: 30px auto;
+    }
+    
+    .welcomeDesign {
+        display: none;
+    }
 
+    /* Header End */
 
-@media only screen and (max-width: 600px) {
+}
+
+@media only screen and (max-width: 950px) {
+    .footer .containerOne {
+        float: none;
+        display: block;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .footer .containerContainer {
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 865px) {
+    .semiContainer {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .hrThree {
+        width: 80%;
+        height: 2px;
+        display: block;
+        margin: 35px auto;
+    }
+}
+
+@media only screen and (max-width: 685px) {
     .bodyOne { 
         padding: 40px 20px; 
     }
@@ -619,17 +703,8 @@ header {
         font-size: 35px; 
     }
 
-    .semiContainer {
-        width: 100%;
-        display: block;
-        padding: 0;
-    }
-
-    .hrThree {
-        width: 80%;
-        height: 2px;
-        display: block;
-        margin: 35px auto;
+    .titleHeader {
+        font-size: 45px; 
     }
 
     /* Header Start */
@@ -697,39 +772,6 @@ header {
         color: #9933FF;
     }
 
-    .welcomeText {
-        float: none;
-        position: static;
-        top: auto;
-        transform: none;
-        right: auto;
-        text-align: center;
-        padding: 40px 10px;
-    }
-    
-    .welcomeText .textOne{
-        font-size: 40px; 
-    }
-    
-    .welcomeText .textTwo{
-        font-size: 55px;
-    }
-    
-    .welcomeText .textThree {
-        font-size: 18px; 
-        line-height: 150%;
-    }
-    
-    .welcomeText hr {
-        width: 60%;
-        margin: 30px auto;
-    }
-    
-    .welcomeDesign {
-        display: none;
-    }
-
-
     /* Header End */
 
 
@@ -744,17 +786,6 @@ header {
         height: 2px;
         display: block;
         margin: 15px auto;
-    }
-
-    .footer .containerOne {
-        float: none;
-        display: block;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .footer .containerContainer {
-        float: none;
     }
 
     .footer .containerTwo {
@@ -782,7 +813,7 @@ header {
 
     .service {
         display: block;
-        margin: 10px 5px;
+        margin: 10px auto;
     }
 
     .service:hover {
@@ -821,10 +852,20 @@ header {
     .recentWork .img {
         display: block;
         width: 100%;
-        height: 220px;
-        margin: 10px 0;
+        max-width: 500px;
+        height: 300px;
+        margin: 10px auto;
     }
 
     /* Recent Work End */
 }
 
+@media only screen and (max-width: 450px) {
+     /* Recent Work Start */
+
+     .recentWork .img {
+        height: 200px;
+     }
+
+      /* Recent Work End */
+}
