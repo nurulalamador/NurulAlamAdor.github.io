@@ -1,2 +1,2 @@
-# NurulAlomAdor.github.io
+# NurulAlamAdor.github.io
 My Personal Website
