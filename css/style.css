@@ -54,6 +54,7 @@ a {
 .hrOne {
     width: 200px;
     border: 1.5px #5533BB solid;
+    background: #5533BB;
     margin: 25px auto;
 }
 
