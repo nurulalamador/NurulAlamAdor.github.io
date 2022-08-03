@@ -27,7 +27,7 @@
             transition: 1s;
         }
         .mikeActive {
-            background-color: orange;
+            background-color: #CC0000;
             color: #FFFFFF;
             animation: mymove 1s infinite;
         }
@@ -45,6 +45,7 @@
         <div id="output"></div>
 		<script>
 		    function runSpeechRecognition() {
+			    console.log("new");
                 var resultCount = 0;
 		        var output = document.getElementById("output");
 		        var action = document.getElementById("action");
@@ -61,7 +62,7 @@
                 recognition.onspeechend = function() {
                     action.innerHTML = "লেখার জন্য মাইক চালু করুন";
                     document.getElementById("mike").classList.remove("mikeActive");
-                    recognition.stop();
+		    console.log("new");
                 }
                 recognition.onresult = function(event) {
                     var transcript = event.results[resultCount][0].transcript;
