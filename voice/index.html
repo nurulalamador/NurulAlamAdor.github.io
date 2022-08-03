@@ -37,7 +37,8 @@
     </style>
 </head>
 <body>
-    <body>
+    <body>	
+	    <br/><br/>
 	    <div class="mike" id="mike" onclick="runSpeechRecognition()"></div>
         <span id="action">লেখার জন্য মাইক চালু করুন</span>
         <br/>
@@ -63,6 +64,7 @@
                     action.innerHTML = "লেখার জন্য মাইক চালু করুন";
                     document.getElementById("mike").classList.remove("mikeActive");
 		    console.log("new");
+			runSpeechRecognition();
                 }
                 recognition.onresult = function(event) {
                     var transcript = event.results[resultCount][0].transcript;
