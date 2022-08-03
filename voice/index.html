@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ভয়েস টাইপিং</title>
+    <title>ভয়েস টাইপিং যতিচিহ্ন</title>
     <style>
         @font-face {
             font-family: "FontAwesomeNew";
@@ -68,7 +68,7 @@
                 }
                 recognition.onresult = function(event) {
                     var transcript = event.results[resultCount][0].transcript;
-                    output.innerHTML += transcript.replace(" যতি চিহ্ন দাড়ি", "।").replace(" যতি চিহ্ন দাঁড়ি", "।").replace(" যতিচিহ্ন দাড়ি", "।").replace(" যতিচিহ্ন দাঁড়ি", "।").replace(" যতি চিহ্ন দাড়ি", "।").replace(" যতি চিহ্ন দাঁড়ি", "।").replace(" যতিচিহ্ন দাড়ি", "।").replace(" যতিচিহ্ন দাঁড়ি", "।").replace(" যতি চিহ্ন কমা", ",").replace(" যতিচিহ্ন কমা", ",");
+                    output.innerHTML += transcript.replace("যতি চিহ্ন দাড়ি", "।").replace("যতি চিহ্ন দাঁড়ি", "।").replace("যতিচিহ্ন দাড়ি", "।").replace("যতিচিহ্ন দাঁড়ি", "।").replace("যতি চিহ্ন দাড়ি", "।").replace("যতি চিহ্ন দাঁড়ি", "।").replace("যতিচিহ্ন দাড়ি", "।").replace("যতিচিহ্ন দাঁড়ি", "।").replace("যতি চিহ্ন কমা", ",").replace("যতিচিহ্ন কমা", ",");
                     resultCount++;
 
                     
