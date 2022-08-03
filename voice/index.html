@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +10,12 @@
         @font-face {
             font-family: "FontAwesomeNew";
             src: url("webfont/fa-solid-900.woff2");
-        }   
+        }
+
         body {
             text-align: center;
         }
+
         .mike {
             background-color: #EEEEEE;
             height: 100px;
@@ -26,60 +29,64 @@
             margin: 20px auto;
             transition: 1s;
         }
+
         .mikeActive {
             background-color: #CC0000;
             color: #FFFFFF;
             animation: mymove 1s infinite;
         }
+
         @keyframes mymove {
-            50% {box-shadow: 0px 0px 0px 15px rgba(0,0,0,0.1);}
+            50% {
+                box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+            }
         }
     </style>
 </head>
+
 <body>
-    <body>	
-	    <br/><br/>
-	    <div class="mike" id="mike" onclick="runSpeechRecognition()"></div>
+
+    <body>
+        <br /><br />
+        <div class="mike" id="mike" onclick="runSpeechRecognition()"></div>
         <span id="action">লেখার জন্য মাইক চালু করুন</span>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div id="output"></div>
-		<script>
-		    function runSpeechRecognition() {
-			    console.log("new");
+        <script>
+            function runSpeechRecognition() {
+                console.log("new");
                 var resultCount = 0;
-		        var output = document.getElementById("output");
-		        var action = document.getElementById("action");
-            
+                var output = document.getElementById("output");
+                var action = document.getElementById("action");
+
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
                 recognition.lang = 'bn-BD';
-                recognition.continuous = true;
-            
-                recognition.onstart = function() {
+
+                recognition.onstart = function () {
                     document.getElementById("mike").classList.add("mikeActive");
                     action.innerHTML = "শুনছি, বলুন...";
                 };
-                recognition.onspeechend = function() {
+                recognition.onspeechend = function () {
                     output.innerHTML += " ";
                     document.getElementById("mike").classList.remove("mikeActive");
-		    console.log("new");
-			runSpeechRecognition();
+                    console.log("new");
+                    runSpeechRecognition();
                 }
-                recognition.onresult = function(event) {
+                recognition.onresult = function (event) {
                     var transcript = event.results[resultCount][0].transcript;
                     output.innerHTML += transcript.replace("যতি চিহ্ন দাড়ি", "।").replace("যতি চিহ্ন দাঁড়ি", "।").replace("যতিচিহ্ন দাড়ি", "।").replace("যতিচিহ্ন দাঁড়ি", "।").replace("যতি চিহ্ন দাড়ি", "।").replace("যতি চিহ্ন দাঁড়ি", "।").replace("যতিচিহ্ন দাড়ি", "।").replace("যতিচিহ্ন দাঁড়ি", "।").replace("যতি চিহ্ন কমা", ",").replace("যতিচিহ্ন কমা", ",");
+                    output.innerHTML = output.innerHTML.replace(/ ,/g, ",").replace(/ ।/g, "।");
                     resultCount++;
+                };
+                recognition.onerror = function (e) {
+                    console.log(e)
+                };
 
-                    
-                };
-                recognition.onerror = function(e) {
-                	console.log(e)
-                };
-            
                 recognition.start();
-	        }
-		</script>
-	</body>
+            }
+        </script>
+    </body>
 </body>
 </html>
