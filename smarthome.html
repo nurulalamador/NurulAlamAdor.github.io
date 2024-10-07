@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+<style>
+* {
+    transition: 0.5s;
+}
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #dddddd;
+}
+
+.header {
+    background-color: #8a2be2;
+    padding: 20px 30px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.optionsContainer {
+    margin: 18px 12px;
+}
+
+.optionsTitle {
+    margin: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.options {
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 8px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.optionBlocked {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(222, 222, 222, 0.6);
+    z-index: 900;
+}
+
+.option:last-child {
+    border-bottom: 0;
+}
+
+.option .text {
+    padding: 14px 18px;
+    flex-grow: 1;
+}
+
+.option .button {
+    position: relative;
+    flex-shrink: 1;
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    margin: 14px;
+    height: 30px;
+}
+.option .active {
+    background-color: #08b508;
+    text-align: right;
+}
+
+.option .circle {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background-color: #ffffff;
+    width: 22px;
+    height: 22px;
+    border-radius: 30px;
+    display: inline-block;
+}
+.option .active .circle {
+    left: 24px;
+}
+.dialogBoxBackground {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.dialogBox {
+    background-color: #ffffff;
+    width: 300px;
+    padding: 12px;
+    border-radius: 18px;
+}
+.dialogBox .buttonContainer {
+    text-align: right;
+    padding: 4px;
+}
+.dialogBox .buttonAlt { 
+    display: inline-block;
+    padding: 10px 12px;
+    font-weight: bold;
+}
+.dialogBox .button { 
+    display: inline-block;
+    background-color: #8a2be2;
+    color: #ffffff;
+    margin: 2px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.dialogBox .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 10px;
+    opacity: 0.9;
+}
+.dialogBox .details {
+    margin: 12px 10px;
+    opacity: 0.8;
+    font-size: 15px;
+}
+.alert {
+    background-color: crimson;
+    color: #ffffff;
+}
+.alert .button { 
+    background-color: #ffffff;
+    color: crimson;
+}
+
+
+
+.none {
+    display: none;
+}
+
+</style>
+<body>
+    <div class="header">Smart Home</div>
+
+    <div class="optionsContainer">
+        <div class="optionsTitle">Lights</div>
+        <div class="options">
+            <div class="option">
+                <div class="text">Auto Control Light</div>
+                <div onclick="toggle('autoLight')" id="autoLight" class="button">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="option">
+                <div class="optionBlocked" id="lightBlocked"></div>
+                <div class="text">Light</div>
+                <div onclick="toggle('light')" id="light" class="button">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="option">
+                <div class="text">Door</div>
+                <div onclick="toggle('door')" id="door" class="button">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="optionsContainer">
+        <div class="optionsTitle">Car Parking</div>
+        <div class="options">
+            <div class="option">
+                <div class="text">Parking Slot 1</div>
+                <div onclick="toggle('parkingSlot1')" id="parkingSlot1" class="button">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="option">
+                <div class="text">Parking Slot 2</div>
+                <div onclick="toggle('parkingSlot2')" id="parkingSlot2" class="button">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogBoxBackground none" id="parkingSlot1Alert">
+        <div class="dialogBox alert">
+            <div class="title">Car Moved From Parking Slot 1</div>
+            <div class="details">The car you parked at Parking Slot 1 has been removed</div>
+            <div class="buttonContainer">
+                <div class="buttonAlt" onclick="dismissAlert('parkingSlot1')">It Was Me</div>
+                <div class="button" id="parkingSlot1AlertTask2">Call Police</div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogBoxBackground none" id="fireAlert">
+        <div class="dialogBox alert">
+            <div class="title">Fire Detected</div>
+            <div class="details">Fire has been detected at your home</div>
+            <div class="buttonContainer">
+                <div class="buttonAlt" onclick="dismissAlert('fire')">Ignore</div>
+                <div class="button">Call Fire Station</div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogBoxBackground none" id="gasAlert">
+        <div class="dialogBox alert">
+            <div class="title">Gas Leak Detected</div>
+            <div class="details">Gas Leak has been detected at your home</div>
+            <div class="buttonContainer">
+                <div class="buttonAlt" onclick="dismissAlert('gas')">Ignore</div>
+                <div class="button">Call Fire Station</div>
+            </div>
+        </div>
+    </div>
+    <script>
+    //    var socket = new WebSocket('ws://10.10.227.183:3000');
+       var socket = new WebSocket('ws://smarthomewebsocket-production.up.railway.app');
+
+
+        socket.onopen = function(event) {
+            console.log('Connected to the server.');
+        };
+
+        socket.onmessage = function(event) {
+            console.log(event.data);
+            let data = event.data.split(":");
+
+            if(data[0] == "control") {
+                if(data[2] == "1") {
+                    document.getElementById(data[1]).classList.add("active");
+                }
+                else {
+                    document.getElementById(data[1]).classList.remove("active");
+                }
+
+                if(data[1] == "autoLight") {
+                    if(data[2] == "0") {
+                        document.getElementById("lightBlocked").classList.add("none");
+                    }
+                    else {
+                        document.getElementById("lightBlocked").classList.remove("none");
+                    }
+                }
+            }
+
+            if(data[0] == "alert") {
+                if(data[2] == "1") {
+                    document.getElementById(data[1]+"Alert").classList.remove("none");
+                }
+                else {
+                    document.getElementById(data[1]+"Alert").classList.add("none");
+                }
+            }
+        };
+
+        function toggle(option) {
+            socket.send("toggle:"+option);
+        };
+
+        function removeDialogBox(id) {
+            document.getElementById(id).classList.add("none");
+        }
+
+        socket.onclose = function(event) {
+            console.log('Disconnected from server');
+        };
+
+        socket.onerror = function(error) {
+            console.error('WebSocket error:', error);
+        };
+
+        function dismissAlert(id) {
+            document.getElementById(id+'Alert').classList.add("none");
+            socket.send("alert:"+id+":0");
+            if(id == "parkingSlot1" || id == "parkingSlot2") {
+                socket.send("toggle:"+id);
+            }
+        };
+    </script>
+</body>
+</html>
