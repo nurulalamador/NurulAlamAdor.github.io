@@ -1,4 +1,4 @@
-<div style="background-color: #ff0000">Ador</div>
+<p style="background-color: #ff0000">Ador</p>
 <h1 align="center">Hi 👋, I'm Nurul Alam Ador</h1>
 <h3 align="center">Web Developer and Graphics Designer</h3>
 
